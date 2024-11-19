@@ -73,17 +73,5 @@ public class Servicios {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-    
-    // Métodos para manejar servicios (solo ejemplos)
-    public void agregarServicio() {
-        // Implementar lógica para agregar un servicio
-    }
-    
-    public void editarServicio() {
-        // Implementar lógica para editar un servicio
-    }
-    
-    public void eliminarServicio() {
-        // Implementar lógica para eliminar un servicio
-    }
+   
 }

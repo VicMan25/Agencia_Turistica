@@ -255,3 +255,15 @@ body {
   word-wrap: break-word;
 }
 
+.alert {
+    padding: 0.8rem;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 1rem;
+    text-align: center;
+    animation: fadeInAlert 1s ease;
+}
+
+.alert-danger {
+    background-color: #d9534f;
+}

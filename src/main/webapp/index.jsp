@@ -18,11 +18,14 @@
         <div class="form-body">
             <img src="images/icono_login.jpg" alt="user-login">
             <p class="text">Bienvenido Turista</p>
-            <form class="login-form" action="inicio.jsp" method="post">
-                <input type="text" id="usuario" name="usuario" placeholder="Email o nombre de usuario" required>
+            <form class="login-form" action="Servlet_Login" method="post">
+                <input type="text" id="id" name="id" placeholder="Número de identificación" required>
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
 
                 <button type="submit">Iniciar Sesión</button>
+                <c:if test="${param.error != null}">
+                    <div class="alert alert-danger">Identificación o contraseña incorrecta.</div>
+                </c:if>
             </form>
 
             <a href="recuperarContra.jsp" class="forgot-password">¿Olvidaste tu contraseña?</a>
@@ -30,9 +33,9 @@
             <div class="create-account">
                 <a href="sing-up.jsp" class="create-account-link">Crear cuenta nueva</a>
             </div>
-            
+
         </div>
-        
+
 
         <%
             String mensaje = (String) request.getSession().getAttribute("mensaje");

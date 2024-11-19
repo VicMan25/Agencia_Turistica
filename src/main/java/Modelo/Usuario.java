@@ -8,7 +8,7 @@ public class Usuario {
     private String sexo;
     private String celular;
     private String correo;
-    private String contraseña;
+    private String contrasena;
 
     public Usuario() {
     }
@@ -20,7 +20,7 @@ public class Usuario {
         this.sexo = sexo;
         this.celular = celular;
         this.correo = correo;
-        this.contraseña = contraseña;
+        this.contrasena = contraseña;
     }
 
     public int getIdPersona() {
@@ -71,12 +71,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     

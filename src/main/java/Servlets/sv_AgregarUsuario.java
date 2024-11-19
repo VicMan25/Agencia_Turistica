@@ -1,68 +1,46 @@
 package Servlets;
 
-
-import java.io.IOException;
-import java.util.List;
+import Modelo.ManejoArchivos;
+import Modelo.Usuario;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.ServletContext;
-import Modelo.Cliente;
-import Modelo.GestionarClientes;
+import java.io.IOException;
+import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "sv_AgregarUsuario", urlPatterns = {"/sv_AgregarUsuario"})
-@MultipartConfig
+// Servlet para registrar usuarios
+@WebServlet("/sv_AgregarUsuario")
 public class sv_AgregarUsuario extends HttpServlet {
 
-    public static GestionarClientes gesClientes = new GestionarClientes();
-
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+            // Obtener parámetros del formulario
             int idPersona = Integer.parseInt(request.getParameter("idPersona"));
             String nombre = request.getParameter("nombre");
             String edad = request.getParameter("edad");
             String sexo = request.getParameter("sexo");
             String celular = request.getParameter("celular");
             String correo = request.getParameter("correo");
-            String contraseña = request.getParameter("contraseña");
+            String contrasena = request.getParameter("contrasena");
 
-            // Verificar si el ID ya existe en la lista
-            List<Cliente> listaClientes = gesClientes.getMisClientes(getServletContext());
-            if (listaClientes!= null) {
-                for (Cliente c : listaClientes) {
-                    if (c.getIdPersona() == idPersona) {
-                        // El ID ya existe, mostrar un mensaje de error y redireccionar
-                        request.getSession().setAttribute("mensaje", "El número de identificación de esta persona ya esta en uso.");
-                        response.sendRedirect("sing-up.jsp");
-                        return; // Salir del método doPost
-                    }
-                }
-            }
+            // Crear un nuevo usuario
+            Usuario nuevoUsuario = new Usuario(idPersona, nombre, edad, sexo, celular, correo, contrasena);
 
-            // Si el número de identificación no está duplicado, proceder a agregar el cliente
-           
-            Cliente nuevoCliente = new Cliente(idPersona, nombre, edad, sexo, celular, correo, contraseña);
+            // Guardar usuario en usuarios.txt
+            ManejoArchivos.guardarUsuario(nuevoUsuario, getServletContext().getRealPath("/data/usuarios.txt"));
 
-            gesClientes.agregarCliente(nuevoCliente, getServletContext());
-
-            request.getSession().setAttribute("mensaje", "Cuenta creada correctamente.");
+            // Redireccionar al login
             response.sendRedirect("index.jsp");
         } catch (NumberFormatException e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "El ID no es válido");
-        } catch (IOException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error al procesar la solicitud");
+            // Manejar errores de formato en identificacion
+            e.printStackTrace();
+            response.sendRedirect("registro.jsp?error=invalid_id");
+        } catch (Exception e) {
+            // Manejar cualquier otro error
+            e.printStackTrace();
+            response.sendRedirect("registro.jsp?error=true");
         }
     }
-
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }
-
 }
