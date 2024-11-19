@@ -97,7 +97,7 @@
 
             </header>
 
-            <section class="py-5" id="PlanesT" data-aos="zoom-in">
+            <section class="py-5" id="PlanesT">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">

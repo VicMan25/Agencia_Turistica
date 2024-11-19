@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page import="Modelo.Servicios"%>
 <%@include file="lib/header.jsp" %>
+
 <div class="container">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -31,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="precio">Precio:</label>
-            <input type="number" step="0.01" class="form-control" id="precio" name="precio">
+            <input type="number" class="form-control" id="precio" name="precio">
         </div>
         <div class="form-group">
             <label for="fecha">Fecha:</label>
