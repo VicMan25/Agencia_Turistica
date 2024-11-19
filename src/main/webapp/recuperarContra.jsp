@@ -17,7 +17,7 @@
                 <button type="submit">Enviar instrucciones de recuperación</button>
             </form>
 
-            <a href="login.jsp" class="create-account-link">Volver al inicio de sesión</a>
+            <a href="index.jsp" class="create-account-link">Volver al inicio de sesión</a>
         </div>
     </body>
 </html>

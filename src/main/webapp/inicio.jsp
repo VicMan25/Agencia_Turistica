@@ -1,4 +1,7 @@
 
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.List"%>
+<%@page import="Modelo.Servicios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -18,6 +21,9 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="styles/stylePlantilla.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
 
     </head>
     <body class="d-flex flex-column h-100">
@@ -66,11 +72,18 @@
                         </section>
                         <div class="col-lg-8 col-xl-7 col-xxl-6 custom-text-section">
                             <div class="my-5 text-center text-xl-custom-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2">Sandoná: Donde la Naturaleza y la Cultura se Encuentran</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">Descubre la belleza de nuestros paisajes, sumérgete en nuestras tradiciones y vive momentos inolvidables en el corazón de Nariño. 
+                                <h1 class="display-5 fw-bolder text-white mb-2" data-aos="zoom-in">Sandoná: Donde la Naturaleza y la Cultura se Encuentran</h1>
+                                <p class="lead fw-normal text-white-50 mb-4" data-aos="zoom-in">Descubre la belleza de nuestros paisajes, sumérgete en nuestras tradiciones y vive momentos inolvidables en el corazón de Nariño. 
                                     En Sandoná, cada rincón te invita a explorar y a conectarte con lo auténtico. Te esperamos para que descubras todo lo que este maravilloso destino tiene para ofrecerte.</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-custom-start">
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#PlanesT">Ver Paquetes</a>
+                                    <form action="gestionarServicios" method="get">
+                                        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" 
+                                                onclick="location.href = 'gestionarServicios?action=servicios2#PlanesT'">
+                                            Ver Paquetes
+                                        </button>
+
+                                    </form>
+
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="servi.jsp">GesServicios</a>
                                 </div>
                             </div>
@@ -84,7 +97,7 @@
 
             </header>
 
-            <section class="py-5" id="PlanesT">
+            <section class="py-5" id="PlanesT" data-aos="zoom-in">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-8 col-xl-6">
@@ -96,15 +109,26 @@
                     </div>
                     <div class="row gx-5">
                         <!-- Tarjeta con botón para abrir el modal -->
+
+                        <%
+                            // Obtenemos la lista de servicios desde el request
+                            List<Servicios> servicios = (List<Servicios>) request.getAttribute("servicios");
+
+                            // Si la lista no es nula y contiene servicios
+                            if (servicios != null && !servicios.isEmpty()) {
+                                for (Servicios servicio : servicios) {
+                        %>
+
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_gastro.jpg" alt="..." />
+                                <img class="card-img-top" src="<%= request.getContextPath() + "/" + servicio.getFoto()%>" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!" data-bs-toggle="modal" data-bs-target="#tourModal1">
-                                        <h5 class="card-title mb-3">Sabores de Sandoná: Un Festín Tradicional</h5>
+                                    <a class="text-decoration-none link-dark stretched-link" href="#!" data-bs-toggle="modal" data-bs-target="#tourModal<%= servicio.getId()%>">
+
+                                        <h5 class="card-title mb-3"><%= servicio.getNombreServicio()%></h5>
                                     </a>
-                                    <p class="card-text mb-0">Descubre la riqueza gastronómica de Sandoná a través de este tour. Disfruta de platillos típicos, elaborados con ingredientes locales, mientras conoces las historias y tradiciones culinarias que se han transmitido de generación en generación.</p>
+                                    <p class="card-text mb-0"><%= servicio.getDescripcion()%></p>
                                 </div>
                                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                     <div class="d-flex align-items-end justify-content-between">
@@ -120,426 +144,37 @@
                         </div>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="tourModal1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
+                        <div class="modal fade" id="tourModal<%= servicio.getId()%>" tabindex="-1" aria-labelledby="modalLabel<%= servicio.getId()%>" aria-hidden="true">
+
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabel1">Sabores de Sandoná: Un Festín Tradicional</h5>
+                                        <h5 class="modal-title" id="modalLabel1"><%= servicio.getNombreServicio()%></h5>
                                     </div>
                                     <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_gastro.jpg" alt="Imagen del tour" />
-                                        <p>Descubre la riqueza gastronómica de Sandoná a través de este tour. Disfruta de platillos típicos, elaborados con ingredientes locales, mientras conoces las historias y tradiciones culinarias que se han transmitido de generación en generación.</p>
-                                        <p><strong>Precio:</strong> $200.000</p>
-                                        <p><strong>Duración:</strong> 3 horas</p>
+                                        <img class="img-fluid mb-4" src="<%= request.getContextPath() + "/" + servicio.getFoto()%>" alt="Imagen del tour" />
+                                        <p><%= servicio.getDescripcion()%></p>
+                                        <p><strong>Precio:</strong> <%= servicio.getPrecio()%></p>
+                                        <p><strong>Fecha: </strong><%= new SimpleDateFormat("yyyy-MM-dd").format(servicio.getFecha())%></p>
                                         <p><strong>Incluye:</strong> Guía turístico, comidas, transporte</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="#" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_cultura.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalCultura">
-                                        <h5 class="card-title mb-3">Tradición y Raíces: Cultura Viva en Sandoná</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Sumérgete en el corazón cultural de Sandoná con este recorrido. Visita sitios históricos, conoce a los artesanos locales y vive de cerca las festividades y costumbres que dan vida a nuestra tierra.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalCultura" tabindex="-1" aria-labelledby="modalLabelCultura" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelCultura">Tradición y Raíces: Cultura Viva en Sandoná</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_cultura.jpg" alt="Imagen del tour" />
-                                        <p>Sumérgete en el corazón cultural de Sandoná con este recorrido. Visita sitios históricos, conoce a los artesanos locales y vive de cerca las festividades y costumbres que dan vida a nuestra tierra.</p>
-                                        <p><strong>Precio:</strong> $80 USD</p>
-                                        <p><strong>Duración:</strong> 4 horas</p>
-                                        <p><strong>Incluye:</strong> Guía turístico, entrada a sitios culturales, transporte</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                         <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_aventura.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalAventura">
-                                        <h5 class="card-title mb-3">Paisajes Inolvidables: Explora la Naturaleza de Sandoná</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Embárcate en una aventura por los paisajes más impresionantes de Sandoná. Camina entre montañas, descubre ríos y cascadas, y disfruta de la belleza natural que convierte a esta región en un destino inolvidable.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalAventura" tabindex="-1" aria-labelledby="modalLabelAventura" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelAventura">Paisajes Inolvidables: Explora la Naturaleza de Sandoná</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_aventura.jpg" alt="Imagen del tour" />
-                                        <p>Embárcate en una aventura por los paisajes más impresionantes de Sandoná. Camina entre montañas, descubre ríos y cascadas, y disfruta de la belleza natural que convierte a esta región en un destino inolvidable.</p>
-                                        <p><strong>Precio:</strong> $90 USD</p>
-                                        <p><strong>Duración:</strong> 5 horas</p>
-                                        <p><strong>Incluye:</strong> Guía turístico, transporte, entradas a reservas naturales</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                    <div class="row gx-5">
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_eco.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalEco">
-                                        <h5 class="card-title mb-3">Ecoturismo en Sandoná: Naturaleza en Estado Puro</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Explora los rincones más vírgenes de Sandoná con nuestros tours de ecoturismo. Conoce la flora y fauna local, participa en actividades sostenibles y contribuye a la preservación del entorno natural.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalEco" tabindex="-1" aria-labelledby="modalLabelEco" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelEco">Ecoturismo en Sandoná: Naturaleza en Estado Puro</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_eco.jpg" alt="Imagen del tour" />
-                                        <p>Explora los rincones más vírgenes de Sandoná con nuestros tours de ecoturismo. Conoce la flora y fauna local, participa en actividades sostenibles y contribuye a la preservación del entorno natural.</p>
-                                        <p><strong>Precio:</strong> $85 USD</p>
-                                        <p><strong>Duración:</strong> 4 horas</p>
-                                        <p><strong>Incluye:</strong> Guía especializado, transporte, entrada a reservas ecológicas</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_fiestas.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalFiestas">
-                                        <h5 class="card-title mb-3">Festividades Locales: Vive la Cultura de Sandoná</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Participa en nuestras vibrantes festividades locales y sumérgete en la cultura de Sandoná. Disfruta de música, danza, y eventos tradicionales que reflejan el espíritu alegre de nuestra comunidad.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalFiestas" tabindex="-1" aria-labelledby="modalLabelFiestas" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelFiestas">Festividades Locales: Vive la Cultura de Sandoná</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_fiestas.jpg" alt="Imagen del tour" />
-                                        <p>Participa en nuestras vibrantes festividades locales y sumérgete en la cultura de Sandoná. Disfruta de música, danza, y eventos tradicionales que reflejan el espíritu alegre de nuestra comunidad.</p>
-                                        <p><strong>Precio:</strong> $60 USD</p>
-                                        <p><strong>Duración:</strong> 3 horas</p>
-                                        <p><strong>Incluye:</strong> Entradas a eventos, guía local, transporte dentro del evento</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_rural.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalRural">
-                                        <h5 class="card-title mb-3">Turismo Rural: Escapada a la Vida Campestre</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Disfruta de la tranquilidad del campo en Sandoná con nuestras experiencias de turismo rural. Hospédate en fincas locales, participa en actividades agrícolas y conecta con la vida rural en un entorno sereno.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalRural" tabindex="-1" aria-labelledby="modalLabelRural" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelRural">Turismo Rural: Escapada a la Vida Campestre</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_rural.jpg" alt="Imagen del tour" />
-                                        <p>Disfruta de la tranquilidad del campo en Sandoná con nuestras experiencias de turismo rural. Hospédate en fincas locales, participa en actividades agrícolas y conecta con la vida rural en un entorno sereno.</p>
-                                        <p><strong>Precio:</strong> $75 USD</p>
-                                        <p><strong>Duración:</strong> 2 noches / 3 días</p>
-                                        <p><strong>Incluye:</strong> Alojamiento en finca, actividades agrícolas, guía local, comida tradicional</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="row gx-5">
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_cafe.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalCafe">
-                                        <h5 class="card-title mb-3">Ruta del Café: Del Grano a la Taza</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Descubre el proceso del café en Sandoná desde su cultivo hasta su preparación. Visita fincas cafetaleras, aprende sobre el arte del café y degusta una taza de café recién preparado.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalCafe" tabindex="-1" aria-labelledby="modalLabelCafe" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelCafe">Ruta del Café: Del Grano a la Taza</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_cafe.jpg" alt="Imagen del tour" />
-                                        <p>Descubre el proceso del café en Sandoná desde su cultivo hasta su preparación. Visita fincas cafetaleras, aprende sobre el arte del café y degusta una taza de café recién preparado.</p>
-                                        <p><strong>Precio:</strong> $85 USD</p>
-                                        <p><strong>Duración:</strong> 1 día</p>
-                                        <p><strong>Incluye:</strong> Visita a finca cafetalera, guía experto, degustación de café, almuerzo tradicional</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_archaeology.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalArchaeology">
-                                        <h5 class="card-title mb-3">Arqueología en Sandoná: Un Viaje al Pasado</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Explora los sitios arqueológicos de Sandoná y descubre la historia y la cultura antigua de la región. Aprende sobre las civilizaciones que habitaron estas tierras y sus contribuciones a la historia.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalArchaeology" tabindex="-1" aria-labelledby="modalLabelArchaeology" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelArchaeology">Arqueología en Sandoná: Un Viaje al Pasado</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_archaeology.jpg" alt="Imagen del tour" />
-                                        <p>Explora los sitios arqueológicos de Sandoná y descubre la historia y la cultura antigua de la región. Aprende sobre las civilizaciones que habitaron estas tierras y sus contribuciones a la historia.</p>
-                                        <p><strong>Precio:</strong> $90 USD</p>
-                                        <p><strong>Duración:</strong> 2 días</p>
-                                        <p><strong>Incluye:</strong> Visitas guiadas a sitios arqueológicos, transporte, guía experto, almuerzo y entrada a los sitios.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-lg-4 mb-5">
-                            <!-- Tarjeta -->
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="images/portada_avistamiento.jpg" alt="Imagen del tour" />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Recomendado</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#" data-bs-toggle="modal" data-bs-target="#modalBirdwatching">
-                                        <h5 class="card-title mb-3">Avistamiento de Aves: Un Paraíso Ornitológico</h5>
-                                    </a>
-                                    <p class="card-text mb-0">Sumérgete en la experiencia del avistamiento de aves en Sandoná. Explora los hábitats naturales y observa una gran variedad de especies en su entorno natural, guiado por expertos locales.</p>
-                                </div>
-                                <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
-                                    <div class="d-flex align-items-end justify-content-between">
-                                        <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="images/estrellaOP.jpg" alt="Calificaciones" />
-                                            <div class="small">
-                                                <div class="fw-bold">Calificaciones</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="modalBirdwatching" tabindex="-1" aria-labelledby="modalLabelBirdwatching" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="modalLabelBirdwatching">Avistamiento de Aves: Un Paraíso Ornitológico</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img class="img-fluid mb-4" src="images/portada_avistamiento.jpg" alt="Imagen del tour" />
-                                        <p>Sumérgete en la experiencia del avistamiento de aves en Sandoná. Explora los hábitats naturales y observa una gran variedad de especies en su entorno natural, guiado por expertos locales.</p>
-                                        <p><strong>Precio:</strong> $70 USD</p>
-                                        <p><strong>Duración:</strong> 1 día</p>
-                                        <p><strong>Incluye:</strong> Guía especializado, transporte, almuerzo y binoculares.</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        <%
+                                }
+                            }
+                        %>
                     </div>
                 </div>
             </section>
 
             <!-- Features Section -->
-            <section class="py-5" id="features">
+            <section class="py-5" id="features" data-aos="zoom-in">
                 <div class="container px-5 my-5">
                     <div class="row gx-5">
                         <div class="col-lg-4 mb-5 mb-lg-0">
@@ -592,7 +227,7 @@
             </section>
 
             <!-- Testimonial Section -->
-            <section class="py-5 bg-light">
+            <section class="py-5 bg-light" data-aos="zoom-in">
                 <div class="container px-5 my-5">
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-10 col-xl-7">
@@ -615,7 +250,7 @@
 
 
             <!-- Blog preview section-->
-            <section>
+            <section data-aos="zoom-in">
                 <!-- Call to action-->
                 <aside class="bg-image rounded-3 p-4 p-sm-5 mt-5" style="background-image: url('images/portada_aventura.jpg'); background-size: cover; background-position: center;">
                     <div class="d-flex align-items-center justify-content-between flex-column flex-xl-row text-center text-xl-start text-white">
@@ -660,6 +295,9 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script>
+                                                    AOS.init();
+        </script>
 
 
     </body>

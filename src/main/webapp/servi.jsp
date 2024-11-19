@@ -8,13 +8,12 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-    
+
     <h1 class="mt-4">Gestión de Servicios</h1>
 
     <form action="gestionarServicios" method="get">
-        <button type="submit" class="btn btn-primary mt-2">Mostrar Servicios</button>
+        <button type="button" class="btn btn-primary mt-2" onclick="location.href='gestionarServicios?action=servicios'">Mostrar Servicios</button>
         <a href="inicio.jsp">Iniciooo</a>
-
     </form>
 
     <hr>
@@ -64,14 +63,14 @@
             </tr>
         </thead>
         <tbody>
-<%
-        // Obtenemos la lista de servicios desde el request
-        List<Servicios> servicios = (List<Servicios>) request.getAttribute("servicios");
+            <%
+                // Obtenemos la lista de servicios desde el request
+                List<Servicios> servicios = (List<Servicios>) request.getAttribute("servicios");
 
-        // Si la lista no es nula y contiene servicios
-        if (servicios != null && !servicios.isEmpty()) {
-            for (Servicios servicio : servicios) {
-    %>
+                // Si la lista no es nula y contiene servicios
+                if (servicios != null && !servicios.isEmpty()) {
+                    for (Servicios servicio : servicios) {
+            %>
             <tr>
                 <td><%= servicio.getId()%></td>
                 <td><%= servicio.getNombreServicio()%></td>

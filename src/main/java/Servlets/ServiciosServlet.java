@@ -31,11 +31,29 @@ public class ServiciosServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Servicios> servicios = gesServicios.listarServicios(); // Solo lista doble
-        request.setAttribute("servicios", servicios);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("servi.jsp");
-        dispatcher.forward(request, response);
+    String action = request.getParameter("action"); // Obtener el parámetro "action" de la URL
+    
+    // Comprobamos el valor del parámetro y redirigimos según corresponda
+    if (action != null) {
+        if (action.equals("servicios")) {
+            List<Servicios> servicios = gesServicios.listarServicios(); // Solo lista doble
+            request.setAttribute("servicios", servicios);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("servi.jsp");
+            dispatcher.forward(request, response);
+        } else if (action.equals("servicios2")) {
+            List<Servicios> servicios = gesServicios.listarServicios(); // Solo lista doble
+            request.setAttribute("servicios", servicios);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("inicio.jsp");
+            dispatcher.forward(request, response);
+        } else {
+            // Si no se encuentra el valor "action", redirigir a una página por defecto
+            response.sendRedirect("error.jsp");
+        }
+    } else {
+        // Si no se proporciona el parámetro "action", redirigir a una página predeterminada
+        response.sendRedirect("servi.jsp");
     }
+}
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -110,6 +128,7 @@ public class ServiciosServlet extends HttpServlet {
                 break;
         }
 
-        response.sendRedirect("gestionarServicios");
+        response.sendRedirect("gestionarServicios?action=servicios");
+
     }
 }
