@@ -23,9 +23,7 @@
                 <input type="password" id="password" name="password" placeholder="Contraseña" required>
 
                 <button type="submit">Iniciar Sesión</button>
-                <c:if test="${param.error != null}">
-                    <div class="alert alert-danger">Identificación o contraseña incorrecta.</div>
-                </c:if>
+
             </form>
 
             <a href="recuperarContra.jsp" class="forgot-password">¿Olvidaste tu contraseña?</a>
