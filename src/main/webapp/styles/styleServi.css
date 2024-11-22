@@ -1,83 +1,130 @@
+/* Fondo y contenedor principal */
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEga9cZ8riFnT77K0rrm3Gspi65L6CtXzyzUNOd_21sj3RGblAnICz4Q-5wq8GRrWGDnvOgW4pV7VpiypKMM0C3tDv1QwlC9y82Fz2RU09H_4Te7RuIyPt6WCvSfr2ZUSs5ptSRt2PKkrCwv/s1600/11540989_966763070022122_7326007425038194297_n.jpg') no-repeat center center fixed;
+    background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEga9cZ8riFnT77K0rrm3Gspi65L6CtXzyzUNOd_21sj3RGblAnICz4Q-5wq8GRrWGDnvOgW4pV7VpiypKMM0C3tDv1QwlC9y82Fz2RU09H_4Te7RuIyPt6WCvSfr2ZUSs5ptSRt2PKkrCwv/s1600/11540989_966763070022122_7326007425038194297_n.jpg'); /* Reemplaza por tu imagen */
     background-size: cover;
-    color: #000;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
     font-family: 'Arial', sans-serif;
 }
 
-header {
-    background-color: #343A40;
-    padding: 50px;
-    border-radius: 10px;
-    animation: fadeIn 2s ease-in-out;
-}
-
 .container {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 15px;
+    background: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
     padding: 30px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 80px;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+/* Títulos */
+h1, h2 {
+    color: #f39c12; /* Naranja brillante */
+    text-align: center;
+    font-weight: 700;
+    font-size: 2.5rem;
 }
 
-.table {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.table thead {
-    background-color: #003366;
-    color: #fff;
-}
-
-.table-hover tbody tr:hover {
-    background-color: #cce5ff;
-}
-
+/* Botones */
 .btn-primary {
-    background-color: #343A40;
-    color: white;
-    border-radius: 25px;
-    border-color: white;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
-    transition: background-color 0.3s, transform 0.3s;
-    margin-bottom: 50px;
+    background-color: #f39c12;
+    border: none;
+    transition: background-color 0.3s ease;
+    justify-items: center;
+}
+
+btn btn-primary mt-2{
+    background-color: #f39c12;
+    border: none;
+    transition: background-color 0.3s ease;
+    justify-items: center;
 }
 
 .btn-primary:hover {
-    background-color: #4c5b6a;
-    transform: scale(1.1);
-    border-color: white;    
+    background-color: #e67e22; /* Color naranja más oscuro */
 }
 
-.animated.bounceIn {
-    animation: bounceIn 1s ease-out;
+.btn-success {
+    background-color: #f39c12;
+    border: none;
+    transition: background-color 0.3s ease;
 }
 
-@keyframes bounceIn {
-    0% {
-        transform: translateY(-1000px);
-        opacity: 0;
-    }
-    60% {
-        transform: translateY(30px);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(0);
-    }
+.btn-success:hover {
+    background-color: #27ae60;
 }
+
+.btn-danger {
+    background-color: #e74c3c;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b;
+}
+
+/* Estilo para tablas */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.6);
     
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #f39c12;
+}
+
+th {
+    background-color: #f39c12;
+    color: white;
+    font-size: 1.2rem;
+}
+
+td {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Estilo para modales */
+.modal-content {
+    background-color: rgba(0, 0, 0, 0.85);
+    border-radius: 8px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    background-color: #f39c12;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #f39c12;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #f39c12;
+    outline: none;
+}
+
+/* Transiciones en botones y enlaces */
+a {
+    color: #f39c12;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e67e22;
+}

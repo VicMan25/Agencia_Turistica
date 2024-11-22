@@ -1,79 +1,94 @@
-/* Estilos del Header/NavBar */
+/* Estilos generales de la navbar */
 .navbar {
-    background-color: #212529; /* Fondo oscuro */
-    padding: 15px 20px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar profundidad */
-    transition: background-color 0.3s ease; /* Transición suave en el color de fondo */
+    background-color: #212529;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 10px 10px;
+    transition: background-color 0.3s ease;
+    height: 180px;
 }
 
-.navbar .navbar-brand {
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
+/* Efecto cuando el usuario pasa el cursor sobre la navbar */
+.navbar:hover {
+    background-color: #000;
 }
 
-.navbar .navbar-brand:hover {
-    color: #007bff; /* Cambiar el color del logo cuando se pase el ratón */
+/* Logo de la empresa */
+.navbar-brand .logo {
+    width: 150px;
+    height: auto;
+    transition: transform 0.3s ease;
 }
 
-.navbar .nav-item {
+/* Animación de logo */
+.navbar-brand .logo:hover {
+    transform: scale(1.1);
+}
+
+/* Estilo de los enlaces de navegación */
+.nav-link {
+    color: #fff !important;
+    font-size: 16px;
     margin: 0 15px;
-}
-
-.navbar .nav-link {
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: color 0.3s ease, transform 0.3s ease; /* Agregar transición en color y escala */
+    letter-spacing: 1px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.navbar .nav-link:hover {
-    color: #007bff; /* Color azul cuando se pase el ratón */
-    transform: scale(1.1); /* Efecto de agrandamiento */
+/* Efecto cuando el usuario pasa el cursor sobre un enlace */
+.nav-link:hover {
+    color: #f39c12 !important;
+    transform: scale(1.1);
 }
 
-.navbar-toggler {
-    border-color: #fff; /* Cambiar color del botón de menú en pantallas pequeñas */
-}
-
+/* Botón de hamburguesa (solo en móviles) */
 .navbar-toggler-icon {
-    background-color: #fff; /* Color del icono de menú */
+    background-color: #fff;
 }
 
-/* Efecto de transición para cuando el menú se expande */
-.navbar-collapse {
-    transition: max-height 0.3s ease-in-out;
-}
-
-/* Animación de la barra de navegación */
-@keyframes fadeInNavbar {
-    0% {
+/* Animación de los enlaces cuando aparecen */
+@keyframes slideIn {
+    from {
         opacity: 0;
         transform: translateY(-20px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.navbar {
-    animation: fadeInNavbar 1s ease-out;
+/* Estilo para los elementos de la barra de navegación */
+.navbar-nav .nav-item {
+    animation: slideIn 0.5s ease-out;
 }
 
-/* Responsividad */
-@media (max-width: 991px) {
+.navbar-nav .nav-item:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.navbar-nav .nav-item:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.navbar-nav .nav-item:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.navbar-nav .nav-item:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 768px) {
     .navbar-nav {
         text-align: center;
     }
 
-    .navbar .nav-item {
+    .nav-item {
         margin: 10px 0;
+    }
+
+    .navbar-brand .logo {
+        width: 120px;
     }
 }

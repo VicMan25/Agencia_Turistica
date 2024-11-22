@@ -23,79 +23,50 @@
         <link href="styles/stylePlantilla.css" rel="stylesheet" />
         <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
+        <link href="styles/footer.css" rel="stylesheet" type="text/css"/>
+        <link href="styles/navbar.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body class="d-flex flex-column h-100">
-        <main class="flex-shrink-0">
-            <!-- Navigation-->
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container px-4">
-                    <!-- Logo y nombre de la empresa -->
 
-                    <a class="navbar-brand d-flex align-items-center" href="#InicioPag">
-                        <img src="images/LogoVD.png" alt="Logo" class="navbar-logo">
-                        <span class="ms-2">DV AGENCIA TURISTÍCA</span>
-                    </a>
-                    <!-- Botón de toggle para dispositivos móviles -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <!-- Menú de navegación -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">Sobre Nosotros</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Restaurantes</a></li>
-                            <li class="nav-item"><a class="nav-link" href="hoteles.jsp">Hoteles</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Iniciar Sesión</a>
-                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                                    <li><a class="dropdown-item" href="sing-up.jsp">Registrarse</a></li>
-                                    <li><a class="dropdown-item" href="index.jsp">Iniciar Sesión</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+
 
             <!-- Header-->
-            <header class="bg-dark py-5">
-                <div class="container px-5">
-                    <div class="row gx-5 align-items-center justify-content-center">
-                        <section id="InicioPag">
-                            <div class="col-12 text-center mb-4">
-                                <img src="images/LogoVD.png" alt="Logo" class="img-fluid" style="max-width: 150px;">
-                            </div>
-                        </section>
-                        <div class="col-lg-8 col-xl-7 col-xxl-6 custom-text-section">
-                            <div class="my-5 text-center text-xl-custom-start">
-                                <h1 class="display-5 fw-bolder text-white mb-2" data-aos="zoom-in">Sandoná: Donde la Naturaleza y la Cultura se Encuentran</h1>
-                                <p class="lead fw-normal text-white-50 mb-4" data-aos="zoom-in">Descubre la belleza de nuestros paisajes, sumérgete en nuestras tradiciones y vive momentos inolvidables en el corazón de Nariño. 
-                                    En Sandoná, cada rincón te invita a explorar y a conectarte con lo auténtico. Te esperamos para que descubras todo lo que este maravilloso destino tiene para ofrecerte.</p>
-                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-custom-start">
-                                    <form action="gestionarServicios" method="get">
-                                        <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" 
-                                                onclick="location.href = 'gestionarServicios?action=servicios2#PlanesT'">
-                                            Ver Paquetes
-                                        </button>
+<header class="bg-dark py-5" style="height: 800px;">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <section id="InicioPag">
+                <div class="col-12 text-center mb-4">
+                    
+                </div>
+            </section>
+            <div class="col-lg-8 col-xl-7 col-xxl-6 custom-text-section">
+                <div class="my-5 text-center text-xl-custom-start">
+                    <h1 class="display-5 fw-bolder text-white mb-2" data-aos="zoom-in">Sandoná: Donde la Naturaleza y la Cultura se Encuentran</h1>
+                    <p class="lead fw-normal text-white-50 mb-4" data-aos="zoom-in">Descubre la belleza de nuestros paisajes, sumérgete en nuestras tradiciones y vive momentos inolvidables en el corazón de Nariño. 
+                        En Sandoná, cada rincón te invita a explorar y a conectarte con lo auténtico. Te esperamos para que descubras todo lo que este maravilloso destino tiene para ofrecerte.</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-custom-start">
+                        <form action="gestionarServicios" method="get">
+                            <button type="button" class="btn btn-primary btn-lg px-4 me-sm-3" 
+                                    onclick="location.href = 'gestionarServicios?action=servicios2#PlanesT'">
+                                Ver Paquetes
+                            </button>
 
-                                    </form>
+                        </form>
 
-                                    <a class="btn btn-primary btn-lg px-4 me-sm-3" href="servi.jsp">GesServicios</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
-                            <img class="img-fluid rounded-3 my-5" src="images/fondoLogin.jpg" alt="Imagen de Sandoná" />
-                        </div>
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="servi.jsp">GesServicios</a>
                     </div>
                 </div>
+            </div>
 
-            </header>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+                <img class="img-fluid rounded-3 my-5" src="images/fondoLogin.jpg" alt="Imagen de Sandoná" />
+            </div>
+        </div>
+    </div>
+
+</header>
+
 
             <section class="py-5" id="PlanesT">
                 <div class="container px-5 my-5">
@@ -271,24 +242,6 @@
                 </div>
             </section>
         </main>
-        <!-- Footer-->
-
-        <footer class="bg-dark text-white py-4">
-            <div class="container px-5">
-                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-                    <div class="col-auto">
-                        <div class="small m-0">&copy; 2024 Sandoná Tours. Todos los derechos reservados.</div>
-                    </div>
-                    <div class="col-auto">
-                        <a class="link-light small" href="#!"><i class="bi bi-shield-lock"></i> Privacidad</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!"><i class="bi bi-file-earmark-text"></i> Términos</a>
-                        <span class="text-white mx-1">&middot;</span>
-                        <a class="link-light small" href="#!"><i class="bi bi-envelope"></i> Contacto</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
 
 
         <!-- Bootstrap core JS-->

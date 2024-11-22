@@ -1,44 +1,14 @@
 <%@page import="Modelo.ListaCircularSimple"%> 
 <%@page import="Modelo.Hotel"%>
 <%@page import="Modelo.ManejoArchivos"%>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <%@include file="lib/header.jsp" %>
-<link href="styles/hotelesStyles.css" rel="stylesheet" type="text/css"/>
+<link href="styles/footer.css" rel="stylesheet" type="text/css"/>
 <link href="styles/navbar.css" rel="stylesheet" type="text/css"/>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container px-4">
-        <!-- Logo y nombre de la empresa -->
-        <a class="navbar-brand d-flex align-items-center" href="inicio.jsp">
-            <img src="images/LogoVD.png" alt="Logo" class="navbar-logo">
-            <span class="ms-2">DV AGENCIA TURISTÍCA</span>
-        </a>
-
-        <!-- Botón de toggle para dispositivos móviles -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Menú de navegación -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-                <li class="nav-item"><a class="nav-link" href="about.jsp">Sobre Nosotros</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Restaurantes</a></li>
-                <li class="nav-item"><a class="nav-link" href="hoteles.jsp">Hoteles</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Iniciar Sesión</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
-                        <li><a class="dropdown-item" href="sing-up.jsp">Registrarse</a></li>
-                        <li><a class="dropdown-item" href="index.jsp">Iniciar Sesión</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<link href="styles/hotel.css" rel="stylesheet" type="text/css"/>
 
 <div class="container">
-    <h2>Ver Hoteles</h2>
+    <h2>Hoteles</h2>
     <div class="form-container">
         <div class="form-body">
             <h3 class="text">Selecciona un hotel</h3>
@@ -102,43 +72,5 @@
         window.location.href = "hoteles.jsp";
     }
 </script>
-
-<style>
-    /* Estilos para el modal */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .modal-content {
-        background-color: #fff;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .modal-content .close {
-        position: absolute;
-        right: 10px;
-        top: 10px;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    .modal-content h2 {
-        margin-top: 0;
-    }
-</style>
 
 <%@include file="lib/footer.jsp" %>

@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%--Importación de la página de emcabezado--%>
-<%@include file="lib/header.jsp" %>
+
 
 
 <!-- login.jsp -->
@@ -64,4 +64,4 @@
 
 
 <%--Importación del pie de página--%>
-<%@include file="lib/footer.jsp" %>
+

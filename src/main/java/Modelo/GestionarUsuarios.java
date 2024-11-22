@@ -1,5 +1,13 @@
 package Modelo;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class GestionarUsuarios {
 
     private Nodo cabeza;
@@ -72,4 +80,24 @@ public class GestionarUsuarios {
     public Nodo getListaUsuarios() {
         return cabeza;
     }
+    
+    // Serializar la lista de usuarios
+    public void serializarAgenciaTuristica() throws IOException {
+        File archivo = new File("./data/agenciaTuristica.data"); 
+        FileOutputStream fos = new FileOutputStream(archivo);
+        ObjectOutputStream oos = new ObjectOutputStream(fos);
+        oos.writeObject(this); // Serializa la instancia actual de GestionarUsuarios
+        oos.close();
+    }
+
+    // Deserializar la lista de usuarios
+    public static GestionarUsuarios deserializarAgenciaTuristica() throws IOException, FileNotFoundException, ClassNotFoundException {
+        File archivo = new File("./data/agenciaTuristica.data");
+        FileInputStream fis = new FileInputStream(archivo);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        GestionarUsuarios agenciaTuristica = (GestionarUsuarios) ois.readObject(); // Deserializa el objeto GestionarUsuarios
+        ois.close();
+        return agenciaTuristica; // Devuelve el objeto deserializado
+    }
 }
+

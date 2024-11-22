@@ -1,0 +1,205 @@
+/* General Body */
+body {
+    background-image: url('https://cafeoccidente.co/images/paisajes/sandona.jpg');
+    background-size: cover; /* La imagen cubre toda el área disponible */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que se repita */
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    margin: 0; /* Elimina el espacio exterior del body */
+    padding: 0; /* Elimina el espacio interior del body */
+    display: flex;
+    flex-direction: column; /* Organiza los elementos en columna */
+    justify-content: flex-start; /* Alinea los elementos al inicio */
+    min-height: 100vh; /* Garantiza que el body siempre tenga al menos el tamaño de la pantalla */
+    overflow-x: hidden; /* Evita el scroll horizontal */
+    overflow-y: auto; /* Permite scroll vertical */
+}
+
+
+/* Heading Style */
+h2 {
+    text-align: center;
+    font-size: 56px;
+    margin-top: 80px;
+    margin-bottom: 40px; /* Más espacio abajo */
+    color: #f39c12; /* Color dorado */
+    animation: bounceIn 1.5s ease; /* Animación para el encabezado */
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 140px; /* Espacio adicional entre el encabezado y el formulario */
+    margin-bottom: 140px;
+}
+
+/* Form Body */
+.form-body {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: rgba(33, 37, 41, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1s ease-out;
+    margin-bottom: 20px; /* Espacio adicional en la parte inferior */
+}
+
+/* Form Title */
+h3.text {
+    font-size: 24px;
+    color: #f39c12;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+    text-align: center;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Label */
+label {
+    font-size: 18px;
+    color: #fff;
+}
+
+/* Input & Select Fields */
+.select,
+input {
+    font-size: 16px;
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: 2px solid #212529;
+    background-color: #212529;
+    color: #fff;
+    transition: all 0.3s ease-in-out; /* Animación de transición */
+}
+
+/* Focus Effect */
+select:focus,
+input:focus {
+    outline: none;
+    border: 2px solid #f39c12;
+    background-color: #343a40;
+}
+
+/* Button Style */
+button {
+    width: 100%;
+    background-color: #f39c12;
+    color: #fff;
+    font-size: 18px;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Button Hover Effect */
+button:hover {
+    background-color: #e67e22;
+    transform: scale(1.05); /* Efecto de zoom al pasar el cursor */
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #f39c12;
+    border-color: #000;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-top: 60px;
+    animation: fadeIn 0.5s ease-out; /* Animación de aparición del modal */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    color: #333;
+    animation: zoomIn 0.5s ease-out; /* Animación de entrada del modal */
+}
+
+/* Close Button */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Close Hover Effect */
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

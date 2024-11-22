@@ -1,82 +1,107 @@
-/* Footer General */
-footer {
-    background-color: #212529; /* Fondo oscuro */
-    color: #fff; /* Texto blanco */
-    padding: 40px 20px;
-    font-size: 16px;
+/* Footer Style */
+.footer {
+    background-color: #212529;
+    color: #fff;
+    padding: 20px 0;
     text-align: center;
-    border-top: 3px solid #007bff; /* Línea superior en azul */
+    position: relative;
+    animation: slideInUp 1s ease-out;
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+/* Footer Content */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.5s ease-out;
 }
 
+/* Logo */
+.footer-logo h3 {
+    font-size: 36px;
+    color: #f39c12;
+    animation: bounceIn 1.5s ease-out;
+}
+
+/* Links */
 .footer-links ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 20px;
-    display: flex;
-    justify-content: center;
 }
 
-.footer-links li {
-    margin: 0 15px;
+.footer-links ul li {
+    margin: 10px 0;
 }
 
-.footer-link {
+.footer-links a {
     color: #fff;
+    font-size: 18px;
     text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
     transition: color 0.3s ease-in-out;
 }
 
-.footer-link:hover {
-    color: #007bff; /* Color azul al pasar el mouse */
+.footer-links a:hover {
+    color: #f39c12;
     text-decoration: underline;
 }
 
-.footer-social {
-    margin-bottom: 20px;
+/* Social Icons */
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
 }
 
-.social-link {
+.footer-social a {
+    font-size: 24px;
     color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-    margin: 0 15px;
-    transition: color 0.3s ease-in-out;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.social-link:hover {
-    color: #007bff; /* Azul al pasar el mouse */
-    transform: scale(1.2); /* Agrandar el ícono social */
+.footer-social a:hover {
+    color: #f39c12;
+    transform: scale(1.1);
 }
 
-.footer-copy {
+/* Footer Bottom */
+.footer-bottom {
+    margin-top: 20px;
     font-size: 14px;
-    color: #ddd; /* Gris suave para el texto del copyright */
+    opacity: 0.7;
+    animation: fadeInUp 2s ease-out;
 }
 
-.footer-copy p {
-    margin: 0;
-}
-
-/* Efecto animado para el footer */
-footer {
-    opacity: 0;
-    animation: fadeInFooter 1s forwards;
-}
-
-@keyframes fadeInFooter {
-    0% {
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(30px);
         opacity: 0;
-        transform: translateY(50px);
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+    60% {
+        transform: scale(1.2);
     }
     100% {
-        opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
     }
 }

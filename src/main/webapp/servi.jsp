@@ -3,23 +3,25 @@
 <%@page import="Modelo.Servicios"%>
 <%@include file="lib/header.jsp" %>
 
-<div class="container">
+
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link href="styles/styleServi.css" rel="stylesheet" />
-
+    <link href="styles/navbar.css" rel="stylesheet" type="text/css"/>
+    <link href="styles/footer.css" rel="stylesheet" type="text/css"/>
 
     <h1 class="mt-4">Gestión de Servicios</h1>
 
     <form action="gestionarServicios" method="get">
-        <button type="button" class="btn btn-primary mt-2" onclick="location.href='gestionarServicios?action=servicios'">Mostrar Servicios</button>
-        <a href="inicio.jsp">Iniciooo</a>
+        <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
+    <button type="button" class="btn btn-primary mt-2" onclick="location.href='gestionarServicios?action=servicios'">Mostrar Servicios</button>
+</div>
     </form>
 
     <hr>
-
+<div class="container">
     <h2>Agregar Servicio</h2>
     <form action="gestionarServicios" method="post" enctype="multipart/form-data"> 
         <input type="hidden" name="accion" value="agregar">
