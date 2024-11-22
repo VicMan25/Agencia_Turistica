@@ -1,6 +1,6 @@
 package Modelo;
 
-public class NodoDoble {
+    public class NodoDoble {
     private Servicios servicio;
     private NodoDoble siguiente;
     private NodoDoble anterior;

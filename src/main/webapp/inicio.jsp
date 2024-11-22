@@ -45,9 +45,9 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li class="nav-item"><a class="nav-link" href="#">Servicios</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Sobre Nosotros</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Sobre Nosotros</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Restaurantes</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Hoteles</a></li>
+                            <li class="nav-item"><a class="nav-link" href="hoteles.jsp">Hoteles</a></li>
                             <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Iniciar Sesión</a>
@@ -160,7 +160,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <a href="compra.jsp" class="btn btn-primary">Comprar Paquete</a>
+                                        <a href="contact.jsp" class="btn btn-primary">Contactanos</a>
                                     </div>
                                 </div>
                             </div>

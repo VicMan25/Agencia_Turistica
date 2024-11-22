@@ -9,7 +9,7 @@ import java.util.List;
 public class GestionarServicios {
 
     private ListaDoble listaDoble;
-    //public  String ARCHIVO_SERVICIOS = "/data/servicios.txt";
+    
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd");
 
     public GestionarServicios() {

@@ -1,0 +1,83 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEga9cZ8riFnT77K0rrm3Gspi65L6CtXzyzUNOd_21sj3RGblAnICz4Q-5wq8GRrWGDnvOgW4pV7VpiypKMM0C3tDv1QwlC9y82Fz2RU09H_4Te7RuIyPt6WCvSfr2ZUSs5ptSRt2PKkrCwv/s1600/11540989_966763070022122_7326007425038194297_n.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #000;
+    font-family: 'Arial', sans-serif;
+}
+
+header {
+    background-color: #343A40;
+    padding: 50px;
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.table thead {
+    background-color: #003366;
+    color: #fff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #cce5ff;
+}
+
+.btn-primary {
+    background-color: #343A40;
+    color: white;
+    border-radius: 25px;
+    border-color: white;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.5);
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 50px;
+}
+
+.btn-primary:hover {
+    background-color: #4c5b6a;
+    transform: scale(1.1);
+    border-color: white;    
+}
+
+.animated.bounceIn {
+    animation: bounceIn 1s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-1000px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(30px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+    

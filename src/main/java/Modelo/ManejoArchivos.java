@@ -17,7 +17,7 @@ public class ManejoArchivos {
                     + usuario.getCelular() + ","
                     + usuario.getCorreo() + ","
                     + usuario.getContrasena() + "\n");
-            System.out.println("Usuario guardado correctamente: " + usuario.getIdPersona()+ filePath);
+            System.out.println("Usuario guardado correctamente: " + usuario.getIdPersona() + filePath);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error al guardar el usuario: " + e.getMessage());
@@ -43,6 +43,33 @@ public class ManejoArchivos {
             System.out.println("Error al convertir el idPersona: " + e.getMessage());
         }
         return false; // Usuario no encontrado o contraseña incorrecta
+    }
+
+    // Método para cargar hoteles desde el archivo
+    public static ListaCircularSimple cargarHoteles(String filePath) {
+        ListaCircularSimple listaHoteles = new ListaCircularSimple();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] campos = line.split(",");
+                int idHotel = Integer.parseInt(campos[0]);
+                String nombre = campos[1];
+                String ubicacion = campos[2];
+                double precioPorNoche = Double.parseDouble(campos[3]);
+                listaHoteles.agregar(new Hotel(idHotel, nombre, ubicacion, precioPorNoche));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return listaHoteles;
+    }
+
+    public static void guardarFactura(String factura, String filePath) {
+        try (FileWriter writer = new FileWriter(filePath, true)) {
+            writer.write(factura + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
